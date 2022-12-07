@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<section>
+    <div class="container">
+        <div class="row">
+            <!-- Blog entries-->
+            <div class="col-lg-8">
+                <!-- Featured blog post-->
+                <div class="card mb-4">
+                    <a href="#!"><img class="card-img-top" src="{% static 'assets/about.jpeg' %}" alt="..." /></a>
+                    <div class="card-body">
+                        <div class="small text-muted" title="TRABAJO DE LOS CHICOS APROBADO">Diciembre 15, 2022</div>
+                        <h2 class="card-title">PProne</h2>
+                        <p class="card-text">
+                            <h4>Nuestra Visión</h4>
+                            <p>
+                            Ser una empresa sólida, viable, competitiva y líder en el mercado nacional, buscando que nuestros productos y marcas sean reconocidos por su calidad, innovación, sus buenas prácticas industriales y comerciales.</p>
+                            <h4>Nuestra Misión</h4>
+                            <p>Generar valor para nuestros clientes, empleados, consumidores y la comunidad haciendo crecer competitivamente nuestra marca, mediante alta calidad en los productos y excelencia en la ejecución.</p>
+                            <h4>Nuestros Valores</h4>
+                            <p><strong>Calidad humana:</strong> trabajamos con gente que tenga voluntad de colaboración y trabajo en equipo.
+                            <br>
+                            <strong>Profesionalismo:</strong> hacemos nuestro trabajo con calidad y excelencia; buscando la mejora continua en todo lo que hacemos.
+                            <br>
+                            <strong>Eficiencia:</strong> Hacemos de manera eficiente todas las actividades que nos proponemos.
+                            <br>
+                            <strong>Osadía:</strong> somos una organización muy dinámica, donde es necesario saber tomar riesgos y asumir responsablemente las consecuencias.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

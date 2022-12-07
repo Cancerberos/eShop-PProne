@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<section>
+    <!-- Page content-->
+    <div class="container">
+        <div class="row">
+            <!-- Blog entries-->
+            <div class="col-lg-8">
+                <!-- Nested row for non-featured blog posts-->
+                <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-2 justify-content-center">
+                    {% for producto in productos %}
+                    <div class="col-lg-6">
+                        <!-- Blog post-->
+                        <div class="card h-100">
+                            {% if producto.tipo == 3 %}
+                                <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">
+                                    Promo
+                                </div>
+                            {% endif %}
+                            {% if producto.tipo == 2 %}
+                                <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">
+                                    Favorito
+                                </div>
+                            {% endif %}
+                            <a href="#!"><img class="card-img-top" src="{{producto.imagen.url}}" alt="..." /></a>
+                            <div class="card-body p-4">
+                                <div class="small text-muted">$ {{producto.precio}}</div>
+                                <h2 class="card-title h4">{{producto.nombre}}</h2>
+                                <p class="card-text">{{producto.descripcion}}</p>
+                                <a class="btn btn-primary" href="{% url 'carro:agregar' producto.id %}">Agregar al carro</a>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <!-- Side widgets-->
+            <div class="col-lg-4">
+                <!-- Search widget-->
+                <!-- 
+                <div class="card mb-4">
+                    <div class="card-header">Search</div>
+                    <div class="card-body">
+                        <div class="input-group">
+                            <input class="form-control" type="text" placeholder="Enter search term..." aria-label="Enter search term..." aria-describedby="button-search" />
+                            <button class="btn btn-primary" id="button-search" type="button">Go!</button>
+                        </div>
+                    </div>
+                </div>
+                -->
+                <!-- Categories widget-->
+                <div class="card mb-4">
+                    <div class="card-header">Filtrar</div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <ul class="list-unstyled mb-0">
+                                    <li><a href="{% url 'index' %}">Todos</a></li>
+                                    <li><a href="{% url 'indexPopu' %}">Favoritos</a></li>
+                                    <li><a href="{% url 'indexPromo' %}">Promo</a></li>
+                                </ul>
+                            </div>
+                            <!-- 
+                            <div class="col-sm-6">
+                                <ul class="list-unstyled mb-0">
+                                    <li><a href="#!">JavaScript</a></li>
+                                    <li><a href="#!">CSS</a></li>
+                                    <li><a href="#!">Tutorials</a></li>
+                                </ul>
+                            </div>
+                            -->
+                        </div>
+                    </div>
+                </div>
+                <!-- Side widget-->
+                <div class="card mb-4">
+                    <div class="card-header">Nuestros horarios</div>
+                    <div class="card-body">Martes a Domingo de 12 hs. a 24 hs</div>
+                </div>
+                <div class="card mb-4">
+                    <div class="card-header">Telefonos de contactos</div>
+                    <div class="card-body">
+                        <strong>Local: </strong> 2996321515
+                        <br>
+                        <strong>Pedidos: </strong> 2996882456
+                    </div>
+                </div>
+            </div>            
+        </div>
+    </div>
+</section>
+{% endblock %}

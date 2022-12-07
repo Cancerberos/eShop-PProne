@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<header class="bg-warning py-1">
+    <div class="container px-4 px-lg-5 my-1">
+        <div class="text-center text-white">
+            <h1 class="display-8 fw-bolder">Detalle de compras</h1>
+        </div>
+    </div>
+</header>
+
+<!-- Section-->
+<section class="py-5">
+    <div class="container px-4 px-lg-5 mt-5">
+        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+            {% for key, value in request.session.carro.items %}
+            <div class="col mb-5">
+                <div class="card h-100">
+                    <!-- Product image-->
+                    <img class="card-img-top" src="{{value.imagen}}" alt="..." />
+                    <!-- Product details-->
+                    <div class="card-body p-4">
+                        <div class="text-center">
+                            <!-- Product name-->
+                            <h5 class="fw-bolder">{{value.nombre}}</h5>
+                            <!-- Cantidad -->
+                            <div>
+                                {% if value.cantidad > 1%}
+                                    {{value.cantidad}} unidades
+                                {% else %}
+                                    {{value.cantidad}} unidad
+                                {% endif %}
+                            </div>
+                            <!-- Product price-->
+                            <div>
+                                Total $ {{value.precio}}
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Product actions-->
+                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                        <div class="text-center">
+                            <a href="{% url 'carro:restar' value.producto_id %}" class="btn btn-success mt-auto">Quitar una unidad</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+<div class="d-grid gap-2 col-4 mx-auto py-2">
+    <a href="{% url 'carro:okPedido' %}" class="btn btn-primary">Confirmar Pedido</a>
+</div>
+{% endblock %}
